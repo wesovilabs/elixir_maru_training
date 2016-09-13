@@ -9,7 +9,9 @@ config :maru, ElixirMaruTraining.Api,
         port: 5002
     ]
 
-config :elixir_ecto_training, ecto_repos: [ElixirEctoTraining.Repo]
+
+config :elixir_maru_training,
+    ecto_repos: [ ElixirEctoTraining.Repo ]
 
 config :elixir_ecto_training, ElixirEctoTraining.Repo,
       adapter: Ecto.Adapters.Postgres,

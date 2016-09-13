@@ -44,9 +44,13 @@ defmodule ElixirMaruTraining.TrackRouterV2 do
          post do
             track = %Track{title: params[:title], singer: params[:singer]}
             inserTrack(track)
+            
+            tracks_as_json = allTracks()
+            |> List.wrap
+            |> Poison.encode!
             conn
             |> put_status(201)
-            |> json(%{})
+            |> json(tracks_as_json)
          end
      end
 

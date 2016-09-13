@@ -1,5 +1,3 @@
-
-Mix.shell.cmd "docker-compose -f docker/docker-compose.yml up -d"
-#Mix.shell.cmd "mix run --no-halt"
-
+Mix.shell.cmd "mix ecto.drop"
+Mix.shell.cmd "mix ecto.load"
 ExUnit.start()
