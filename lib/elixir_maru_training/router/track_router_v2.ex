@@ -45,7 +45,7 @@ defmodule ElixirMaruTraining.TrackRouterV2 do
             track = %Track{title: params[:title], singer: params[:singer]}
             inserTrack(track)
             conn
-            |> put_status(204)
+            |> put_status(201)
             |> json(%{})
          end
      end

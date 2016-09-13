@@ -21,7 +21,8 @@ defmodule ElixirMaruTraining.Api do
     end
 
     rescue_from Maru.Exceptions.NotFound, as: e do
-          Logger.debug "404: URL Not Found at path /#{e.path_info}"
+          Logger.debug "#{inspect e}"
+          Logger.debug "404: URL Not Found at path /#{inspect e.path_info}"
           conn
           |> put_status(404)
           |> json(%{message: "Hey budy you have no idea where you want to go"})

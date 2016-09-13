@@ -6,7 +6,7 @@ config :maru, ElixirMaruTraining.Api,
         using: :path
     ],
     http: [
-        port: 5001
+        port: 5002
     ]
 
 config :elixir_ecto_training, ecto_repos: [ElixirEctoTraining.Repo]
@@ -20,4 +20,4 @@ config :elixir_ecto_training, ElixirEctoTraining.Repo,
       port: "3001",
       pool: Ecto.Adapters.SQL.Sandbox
 
-config :elixir_ecto_training, base_url: (Mix.env == :dev && "http://127.0.0.1:5001/elixir_ecto_training/" || "http://elixir_ecto_training.herokuapp.com/")
+config :elixir_ecto_training, base_url: (Mix.env == :dev && "http://127.0.0.1:5002/")

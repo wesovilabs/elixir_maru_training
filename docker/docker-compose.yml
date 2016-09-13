@@ -1,23 +1,11 @@
 version: '2'
 services:
-
   postgres:
     image: library/postgres:9.6
-    container_name: elixir_ecto_training_pg
-    volumes:
-      - postgres-db-volume:/data/postgres
+    container_name: elixir_ecto_training_pg  
     ports:
       - "3001:5432"
     env_file:
       - ./containers/postgresql/postgresql.env
-    networks:
-      - backend
-volumes:
-  postgres-db-volume:
-    driver: local
-
-networks:
-  backend:
-    driver: bridge
-
-
+  
+    

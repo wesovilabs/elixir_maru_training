@@ -1,7 +1,6 @@
 defmodule ElixirMaruTraining.TrackRouterV1 do
   use Maru.Router
   require Logger
-  alias ElixirEctoTraining.Track, warn: true
   alias ElixirMaruTraining.TrackResource
 
   def allTracks do
@@ -11,8 +10,6 @@ defmodule ElixirMaruTraining.TrackRouterV1 do
     ]
   end
 
-
-
   namespace :tracks do
 
     version "v1" do
@@ -20,7 +17,8 @@ defmodule ElixirMaruTraining.TrackRouterV1 do
         @desc "Return the list of mocked tracks"
         get do
             tracks = allTracks()
-            Logger.debug "Tracks #{inspect tracks}"
+            |> List.wrap
+            |> Poison.encode!
             conn
             |> put_status(200)
             |> json(tracks)
@@ -34,10 +32,13 @@ defmodule ElixirMaruTraining.TrackRouterV1 do
           optional :score, type: Atom, values: [:bad, :normal, :good, :awesome], default: :normal
         end
         post do
-            track = %Track{title: params[:title], singer: params[:singer]}
+            track = %TrackResource{title: params[:title], singer: params[:singer]}
+            tracks_as_json = [track | allTracks()]
+            |> List.wrap
+            |> Poison.encode!
             conn
-            |> put_status(204)
-            |> json(%{})
+            |> put_status(201)
+            |> json(tracks_as_json)
         end
     end
   end
