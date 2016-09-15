@@ -22,7 +22,6 @@ defmodule ElixirMaruTraining.Mixfile do
         {:poison, "~> 2.0"},
         {:plug, git: "https://github.com/elixir-lang/plug.git", tag: "v1.1.6", override: true},
         {:elixir_ecto_training, git: "https://github.com/wesovilabs/elixir_ecto_training.git", tag: "0.1.0"},
-        {:exkorpion, path: "../exkorpion", only: [:dev, :test]},
         {:httpoison, "~> 0.9.0", only: [:test]}
     ]
   end
